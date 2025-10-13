@@ -121,6 +121,7 @@ async function main() {
 
   // Additional Shadcn prompt if Tailwind selected
   let shadcn = false;
+  let packageManager = 'npm';
   if (response.tailwind === 'yes') {
     const shadcnPrompt = await prompts({
       type: 'select',
@@ -133,6 +134,23 @@ async function main() {
       initial: 0,
     });
     shadcn = shadcnPrompt.shadcn;
+
+    // Ask for package manager if Shadcn is selected
+    if (shadcn) {
+      const pmPrompt = await prompts({
+        type: 'select',
+        name: 'packageManager',
+        message: 'Which package manager would you like to use for installing shadcn?',
+        choices: [
+          { title: 'npm (npx shadcn@latest init)', value: 'npm' },
+          { title: 'yarn (yarn dlx shadcn@latest init)', value: 'yarn' },
+          { title: 'pnpm (pnpm dlx shadcn@latest init)', value: 'pnpm' },
+          { title: 'bun (bunx --bun shadcn@latest init)', value: 'bun' },
+        ],
+        initial: 0,
+      });
+      packageManager = pmPrompt.packageManager;
+    }
   }
 
   // Compose create-next-app args based on answers
@@ -155,7 +173,18 @@ async function main() {
   if (shadcn) {
     try {
       process.chdir(response.projectName);
-      run('npx', ['shadcn@latest', 'init']);
+      
+      // Run shadcn init with the appropriate command for each package manager
+      console.log('\nInitializing Shadcn UI...');
+      if (packageManager === 'pnpm') {
+        run('pnpm', ['dlx', 'shadcn@latest', 'init']);
+      } else if (packageManager === 'yarn') {
+        run('yarn', ['dlx', 'shadcn@latest', 'init']);
+      } else if (packageManager === 'bun') {
+        run('bunx', ['--bun', 'shadcn@latest', 'init']);
+      } else {
+        run('npx', ['shadcn@latest', 'init']);
+      }
     } catch (error) {
       console.error('Failed to install Shadcn UI:', error);
     }
