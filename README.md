@@ -37,7 +37,7 @@ create-next-shadcn
 - **⚡ Modern Stack** - Next.js 14+ with App Router and Turbopack support
 - **🎨 Shadcn UI Integration** - Automatic installation and configuration
 - **🔧 Flexible Configuration** - TypeScript, ESLint, Tailwind CSS, and more
-- **📦 Package Manager Support** - npm, yarn, and pnpm
+- **📦 Package Manager Support** - npm, yarn, pnpm, and bun
 - **🎭 Beautiful Terminal UI** - Colorful, boxed output with clear instructions
 - **🛡️ Error Handling** - Graceful cancellation and error recovery
 
@@ -156,7 +156,7 @@ Yes
 | **Turbopack** | Enable Turbopack bundler | Yes | Yes/No |
 | **Import Alias** | Custom import alias | `@/*` | Any alias |
 | **Shadcn UI** | Install Shadcn UI | Yes | Yes/No |
-| **Package Manager** | Package manager for Shadcn | npm | npm/yarn/pnpm |
+| **Package Manager** | Package manager for Shadcn | npm | npm/yarn/pnpm/bun |
 
 ## 📁 Project Structure
 

@@ -44,6 +44,19 @@ function createBox(message: string) {
   return box.join('\n');
 }
 
+// Utility to get the correct shadcn add command for each package manager
+function getShadcnAddCommand(packageManager: string): string {
+  if (packageManager === 'pnpm') {
+    return 'pnpm dlx shadcn@latest add button';
+  } else if (packageManager === 'bun') {
+    return 'bunx --bun shadcn@latest add button';
+  } else if (packageManager === 'yarn') {
+    return 'yarn shadcn@latest add button';
+  } else {
+    return 'npx shadcn@latest add button';
+  }
+}
+
 // Interactive CLI
 async function main() {
   const response = await prompts([
@@ -199,8 +212,9 @@ async function main() {
         message: 'Which package manager would you like to use for installing shadcn?',
         choices: [
           { title: 'npm (npx shadcn@latest init)', value: 'npm' },
-          { title: 'yarn (yarn dlx shadcn@latest init)', value: 'yarn' },
+          { title: 'yarn (yarn shadcn@latest init)', value: 'yarn' },
           { title: 'pnpm (pnpm dlx shadcn@latest init)', value: 'pnpm' },
+          { title: 'bun (bunx --bun shadcn@latest init)', value: 'bun' },
         ],
         initial: 0,
       }, {
@@ -246,14 +260,30 @@ async function main() {
     try {
       process.chdir(response.projectName);
       
+      // First, install dependencies with the chosen package manager
+      console.log(`\nInstalling dependencies with ${packageManager}...\n`);
+      
+      if (packageManager === 'yarn') {
+        run('yarn', ['install']);
+      } else if (packageManager === 'pnpm') {
+        run('pnpm', ['install']);
+      } else if (packageManager === 'bun') {
+        run('bun', ['install']);
+      } else {
+        run('npm', ['install']);
+      }
+      
       // Run shadcn init with the appropriate command for each package manager
       console.log('\nInitializing Shadcn UI...\n');
       
       if (packageManager === 'pnpm') {
         run('pnpm', ['dlx', 'shadcn@latest', 'init']);
+      } else if (packageManager === 'bun') {
+        run('bunx', ['--bun', 'shadcn@latest', 'init']);
       } else if (packageManager === 'yarn') {
-        run('yarn', ['dlx', 'shadcn@latest', 'init']);
+        run('yarn', ['shadcn@latest', 'init']);
       } else {
+        // For npm, use npx
         run('npx', ['shadcn@latest', 'init']);
       }
     } catch (error) {
@@ -266,8 +296,10 @@ async function main() {
       
       if (packageManager === 'pnpm') {
         console.log(`   pnpm dlx shadcn@latest init`);
+      } else if (packageManager === 'bun') {
+        console.log(`   bunx --bun shadcn@latest init`);
       } else if (packageManager === 'yarn') {
-        console.log(`   yarn dlx shadcn@latest init`);
+        console.log(`   yarn shadcn@latest init`);
       } else {
         console.log(`   npx shadcn@latest init`);
       }
@@ -286,7 +318,7 @@ async function main() {
     `⭐ ${kleur.bold('Star us on GitHub')}:\n` +
     `   ${kleur.underline('https://github.com/vedantlavale/create-next-shadcn')}\n\n` +
     `🎨 ${kleur.bold('Add components')}:\n` +
-    `   ${kleur.cyan('npx shadcn-ui@latest add [component-name]')}`
+    `   ${kleur.cyan(getShadcnAddCommand(packageManager))}`
   );
   console.log('\n' + successMessage + '\n');
 }
