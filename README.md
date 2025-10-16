@@ -1,4 +1,4 @@
-# create-next-shadcn
+# Shadnex
 
 <div align="center">
 
@@ -10,7 +10,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Bun](https://img.shields.io/badge/Bun-FBF0DF?style=for-the-badge&logo=bun&logoColor=000000)
 
-**The ultimate CLI for creating Next.js applications with Shadcn UI**
+**The ultimate CLI for creating Next.js applications with Shadcn UI (command: `shadnex`)**
 
 </div>
 
@@ -23,12 +23,12 @@
 ## 🚀 Quick Start
 
 ```bash
-# Create a new Next.js project with Shadcn UI
-npx create-next-shadcn-cli@latest
+# Create a new Next.js project with Shadnex (no install required)
+npx shadnex@latest
 
-# Or install globally first
+# Or install globally first (package name remains create-next-shadcn-cli)
 npm install -g create-next-shadcn-cli
-create-next-shadcn
+shadnex
 ```
 
 ## 🚀 Features
@@ -46,12 +46,12 @@ create-next-shadcn
 ### Using npx (Recommended - No Installation Required)
 
 ```bash
-npx create-next-shadcn-cli@latest
+npx shadnex@latest
 ```
 
 ### Global Installation
 
-Install globally to use the `create-next-shadcn` command anywhere:
+Install globally to use the `shadnex` command anywhere (the package name is `create-next-shadcn-cli`):
 
 ```bash
 # Using npm
@@ -79,7 +79,7 @@ cd create-next-shadcn
 # Install dependencies
 bun install
 
-# Run locally
+# Run locally (dev)
 bun run cli.ts
 ```
 
@@ -89,10 +89,10 @@ bun run cli.ts
 
 ```bash
 # Using npx (recommended - no installation needed)
-npx create-next-shadcn-cli@latest
+npx shadnex@latest
 
 # After global installation
-create-next-shadcn
+shadnex
 
 # Local development
 bun run cli.ts
@@ -160,7 +160,7 @@ Yes
 
 ## 📁 Project Structure
 
-After running `npx create-next-shadcn-cli@latest` or `create-next-shadcn`, you'll get a fully configured Next.js project:
+After running `npx shadnex@latest` or `shadnex`, you'll get a fully configured Next.js project:
 
 ```
 my-awesome-app/
