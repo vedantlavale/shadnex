@@ -1,6 +1,6 @@
 {
   "name": "shadnex",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "The ultimate CLI for creating Next.js applications with Shadcn UI",
   "main": "dist/cli.js",
   "bin": {
