@@ -1,0 +1,50 @@
+{
+  "name": "shadnex",
+  "version": "1.0.4",
+  "description": "The ultimate CLI for creating Next.js applications with Shadcn UI",
+  "main": "dist/cli.js",
+  "bin": {
+    "shadnex": "./dist/cli.js"
+  },
+  "module": "dist/cli.js",
+  "type": "module",
+  "keywords": [
+    "nextjs",
+    "shadcn",
+    "cli",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "create-next-app",
+    "ui-components"
+  ],
+  "author": "Vedant Lavale <vedantlavale@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedantlavale/shadnex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vedantlavale/shadnex/issues"
+  },
+  "homepage": "https://github.com/vedantlavale/shadnex#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "bun build src/cli.ts --outdir ./dist --target node",
+    "dev": "bun run src/cli.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/prompts": "^2.4.9",
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2"
+  }
+}

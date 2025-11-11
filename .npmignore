@@ -1,0 +1,50 @@
+# Source files (will be in dist)
+src/
+*.ts
+tsconfig.json
+
+# Old root files (deprecated)
+cli.ts
+index.ts
+
+# Development files
+.git
+.github
+.gitignore
+.cursor
+*.md
+!README.md
+CONTRIBUTING.md
+
+# Build artifacts (except dist)
+out
+coverage
+*.lcov
+
+# Dependencies
+node_modules
+bun.lock
+
+# IDE files
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+report.*.json
+
+# Environment files
+.env*
+!.env.example
+
+# Cache
+.cache
+*.tsbuildinfo
+.eslintcache
