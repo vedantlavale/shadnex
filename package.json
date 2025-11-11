@@ -4,7 +4,7 @@
   "description": "The ultimate CLI for creating Next.js applications with Shadcn UI",
   "main": "dist/cli.js",
   "bin": {
-    "shadnex": "./dist/cli.js"
+    "shadnex": "dist/cli.js"
   },
   "module": "dist/cli.js",
   "type": "module",
@@ -22,7 +22,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vedantlavale/shadnex.git"
+    "url": "git+https://github.com/vedantlavale/shadnex.git"
   },
   "bugs": {
     "url": "https://github.com/vedantlavale/shadnex/issues"
@@ -31,8 +31,14 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "files": [
+    "dist/",
+    "node_modules/figlet/",
+    "node_modules/oh-my-logo/",
+    "node_modules/cfonts/"
+  ],
   "scripts": {
-    "build": "bun build src/cli.ts --outdir ./dist --target node",
+    "build": "bun build src/cli.ts --outdir ./dist --target node --external oh-my-logo --external figlet --external cfonts",
     "dev": "bun run src/cli.ts",
     "prepublishOnly": "bun run build"
   },
