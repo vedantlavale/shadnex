@@ -1,6 +1,6 @@
 {
   "name": "shadnex",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The ultimate CLI for creating Next.js applications with Shadcn UI",
   "main": "dist/cli.js",
   "bin": {
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@types/prompts": "^2.4.9",
+    "cfonts": "^3.1.1",
     "kleur": "^4.1.5",
     "oh-my-logo": "^0.4.0",
     "prompts": "^2.4.2",
