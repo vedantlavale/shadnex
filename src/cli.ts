@@ -132,7 +132,7 @@ async function main() {
         writeFileSync('LICENSE', licenseText);
         console.log(kleur.blue('LICENSE file created. Please edit it to fill in any required fields'));
       } catch (error) {
-        console.log(kleur.yellow('Could not create LICENSE file'))
+        console.log(kleur.yellow('Could not create LICENSE file'));
         console.error(error)
       }
     }
