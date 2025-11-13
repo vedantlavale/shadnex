@@ -7,6 +7,6 @@ export async function getLicenseText(license: License) {
     return text ? text.trim() : '';
   } catch (error) {
     console.warn(`Could not get text for license: ${license}`);
-    return '';
+    throw error;
   }
 }
