@@ -1,10 +1,10 @@
 import type { License } from "../types";
 
-export function getLicenseText(license: License) {
+export async function getLicenseText(license: License) {
   try {
-    const licenseData = require(`spdx-license-list/licenses/${license}`);
-    const text = licenseData.licenseText;
-    return text.trim();
+    const licenseData = await import(`spdx-license-list/licenses/${license}.json`);
+    const text = licenseData.licenseText || (licenseData.default && licenseData.default.licenseText);
+    return text ? text.trim() : '';
   } catch (error) {
     console.warn(`Could not get text for license: ${license}`);
     return '';
